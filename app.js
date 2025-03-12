@@ -1,15 +1,18 @@
-let inputAmigos = document.querySelector("#amigos");
-let botaoAdicionar = document.querySelector("#button-add");
-let listaHtml = documento.querySelector("#listaAmigos")
-let listaDeAmigos=[];
+let inputAmigos = document.querySelector("#amigo");
+let botaoAdicionar = document.querySelector(".button-add");
+let listaHtml = document.querySelector("#listaAmigos");
+let listaDeAmigos = [];
 
 function adicionarAmigo() {
+    let nome = inputAmigos.value.trim();
+
     if (nome === "") {
         alert("Por favor, adicione um nome!");
         return;
-    }else{
-    listaDeAmigos.push(nome);
+    } else {
+        listaDeAmigos.push(nome);
     }
+
     listaHtml.innerHTML = "";
 
     for (let i = 0; i < listaDeAmigos.length; i++) {
@@ -20,6 +23,7 @@ function adicionarAmigo() {
 
     inputAmigos.value = "";
 }
+
 botaoAdicionar.onclick = adicionarAmigo;
 
 function sortearAmigo() {
@@ -27,9 +31,10 @@ function sortearAmigo() {
         alert("Não há amigos disponíveis para sortear.");
         return;
     }
+    
     let indiceAleatorio = Math.floor(Math.random() * listaDeAmigos.length);
     let amigoSorteado = listaDeAmigos[indiceAleatorio];
 
-    document.getElementById("resultado").innerHTML = "O amigo sorteado é: " + amigoSorteado;
+    let resultado = document.querySelector("#resultado");
+    resultado.innerHTML = "O amigo sorteado é: " + amigoSorteado;
 }
-
